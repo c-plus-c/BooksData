@@ -12,21 +12,21 @@
 	<h1>書籍検索ページ</h1>
 	<form action="search.cgi" method="get">
 	  検索ワード:<input type="text" name="query" ><xsl:attribute name="value"><xsl:value-of select="$query" /></xsl:attribute></input><br />
-		<input type="submit" value="検索" /><br />
-		検索対象：<br />
-		<input type="checkbox" name="title" ><xsl:if test="$title = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>タイトル
-		<input type="checkbox" name="creator" ><xsl:if test="$creator = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>作者
-		<input type="checkbox" name="publisher" ><xsl:if test="$publisher = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>出版日
-		<input type="checkbox" name="price" ><xsl:if test="$price = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>価格
-		<input type="checkbox" name="isbn" ><xsl:if test="$isbn = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>isbn
-		<input type="checkbox" name="url" ><xsl:if test="$url = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>URL
-		<input type="checkbox" name="description" ><xsl:if test="$description = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>概要
-		<input type="checkbox" name="keyword" ><xsl:if test="$keyword = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>キーワード<br />
-		並び順：<br />
-		<input type="radio" name="order" value="price_down"><xsl:if test="$order = 'price_down' or $order != 'price_up' and $order != 'date_up' and $order != 'date_down' "><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>価格降順
-		<input type="radio" name="order" value="price_up"><xsl:if test="$order = 'price_up'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>価格昇順
-		<input type="radio" name="order" value="date_down"><xsl:if test="$order = 'date_down'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>出版日降順
-		<input type="radio" name="order" value="date_up"><xsl:if test="$order = 'date_up'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>出版日昇順
+	  <input type="submit" value="検索" /><br />
+	  検索対象：<br />
+	  <input type="checkbox" name="title" ><xsl:if test="$title = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>タイトル
+	  <input type="checkbox" name="creator" ><xsl:if test="$creator = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>作者
+	  <input type="checkbox" name="publisher" ><xsl:if test="$publisher = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>出版日
+	  <input type="checkbox" name="price" ><xsl:if test="$price = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>価格
+	  <input type="checkbox" name="isbn" ><xsl:if test="$isbn = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>isbn
+	  <input type="checkbox" name="url" ><xsl:if test="$url = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>URL
+	  <input type="checkbox" name="description" ><xsl:if test="$description = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>概要
+	  <input type="checkbox" name="keyword" ><xsl:if test="$keyword = 'on'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>キーワード<br />
+	  並び順：<br />
+	  <input type="radio" name="order" value="price_down"><xsl:if test="$order = 'price_down' or $order != 'price_up' and $order != 'date_up' and $order != 'date_down' "><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>価格降順
+	  <input type="radio" name="order" value="price_up"><xsl:if test="$order = 'price_up'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>価格昇順
+	  <input type="radio" name="order" value="date_down"><xsl:if test="$order = 'date_down'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>出版日降順
+	  <input type="radio" name="order" value="date_up"><xsl:if test="$order = 'date_up'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if></input>出版日昇順
 	</form>
         <xsl:if test="$search = 'true'">
       	  <xsl:apply-templates select="books" />
