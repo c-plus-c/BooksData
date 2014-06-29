@@ -1,0 +1,26 @@
+<?php
+    /**
+     * XMLファイルの読み込み
+     */
+    $xml = new DomDocument();
+    $xml->load('/www_local/mul/xml');
+
+    /**
+     * XSLファイルの読み込み
+     */
+    $xsl = new DomDocument();
+    $xsl->load('/www_local/mul/list.xsl');
+
+    /**
+     * XSLTプロセッサオブジェクトの作成と使用するXSLの指定
+     */
+    $processor = new xsltprocessor();
+    $processor->importStyleSheet($xsl);
+
+    /**
+     * 変換＆結果の表示
+     */
+    echo $processor->transformToXML($xml);
+?>
+
+
