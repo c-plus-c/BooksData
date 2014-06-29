@@ -44,29 +44,14 @@
      	<xsl:for-each select="item">
 	 <xsl:sort select="price" data-type="number" order="descending" />
 
-      <xsl:if test="$title = 'on' and contains(title,$query) or $creator = 'on' and contains(creator,$query) or  $publisher = 'on' and contains(publisher,$query) or $price = 'on' and contains(price,$query) or $isbn = 'on' and contains(isbn,$query) or $url = 'on' and contains(url/@resource,$query) or $description = 'on' and contains(description,$query) or $keyword = 'on' and (contains(keywords/keyword[1],$query) or contains(keywords/keyword[2],$query) or contains(keywords/keyword[3],$query))">
-	 <tr>
-	 <td><a><xsl:attribute name="href">details.cgi?number=<xsl:value-of select="@no" /></xsl:attribute><xsl:value-of select="title" /></a></td>
-	 <td><xsl:value-of select="creator" /></td>
-	 <td><xsl:value-of select="date/year" />-<xsl:value-of select="date/month" />-<xsl:value-of select="date/day" /></td>
-	 <td><xsl:value-of select="price" /></td>
-	 </tr>
-      </xsl:if>
+     <xsl:apply-templates select="." />
 	</xsl:for-each>
 	</xsl:when>
 	<xsl:when test="$order = 'price_up'">
      	<xsl:for-each select="item">
 	 <xsl:sort select="price" data-type="number" order="ascending" />
 
-      <xsl:if test="$title = 'on' and contains(title,$query) or $creator = 'on' and contains(creator,$query) or  $publisher = 'on' and contains(publisher,$query) or $price = 'on' and contains(price,$query) or $isbn = 'on' and contains(isbn,$query) or $url = 'on' and contains(url/@resource,$query) or $description = 'on' and contains(description,$query) or  $keyword = 'on' and (contains(keywords/keyword[1],$query) or contains(keywords/keyword[2],$query) or contains(keywords/keyword[3],$query))">
-	 <tr>
-	 <td><a><xsl:attribute name="href">details.cgi?number=<xsl:value-of select="@no" /></xsl:attribute><xsl:value-of select="title" /></a></td>
-	 <td><xsl:value-of select="creator" /></td>
-	 <td><xsl:value-of select="date/year" />-<xsl:value-of select="date/month" />-<xsl:value-of select="date/day" /></td>
-	 <td><xsl:value-of select="price" /></td>
-	 </tr>
-      </xsl:if>
-
+    <xsl:apply-templates select="." />
      	</xsl:for-each>
 	</xsl:when>
 	<xsl:when test="$order = 'date_down'">
@@ -75,14 +60,7 @@
 	 <xsl:sort select="date/month" data-type="number" order="descending" />
 	 <xsl:sort select="date/day" data-type="number" order="descending" />
 
-      <xsl:if test="$title = 'on' and contains(title,$query) or $creator = 'on' and contains(creator,$query) or  $publisher = 'on' and contains(publisher,$query) or $price = 'on' and contains(price,$query) or $isbn = 'on' and contains(isbn,$query) or $url = 'on' and contains(url/@resource,$query) or $description = 'on' and contains(description,$query) or  $keyword = 'on' and (contains(keywords/keyword[1],$query) or contains(keywords/keyword[2],$query) or contains(keywords/keyword[3],$query))">
-	 <tr>
-	 <td><a><xsl:attribute name="href">details.cgi?number=<xsl:value-of select="@no" /></xsl:attribute><xsl:value-of select="title" /></a></td>
-	 <td><xsl:value-of select="creator" /></td>
-	 <td><xsl:value-of select="date/year" />-<xsl:value-of select="date/month" />-<xsl:value-of select="date/day" /></td>
-	 <td><xsl:value-of select="price" /></td>
-	 </tr>
-      </xsl:if>
+    <xsl:apply-templates select="." />
 
      	</xsl:for-each>
 	</xsl:when>
@@ -91,7 +69,16 @@
 	 <xsl:sort select="date/year" data-type="number" order="ascending" />
 	 <xsl:sort select="date/month" data-type="number" order="ascending" />
 	 <xsl:sort select="date/day" data-type="number" order="ascending" />
+	 
+	 <xsl:apply-templates select="." />
+     	</xsl:for-each>
+	</xsl:when>
+      </xsl:choose>
 
+    </table>
+  </xsl:template>
+  
+    <xsl:template match="item">
       <xsl:if test="$title = 'on' and contains(title,$query) or $creator = 'on' and contains(creator,$query) or  $publisher = 'on' and contains(publisher,$query) or $price = 'on' and contains(price,$query) or $isbn = 'on' and contains(isbn,$query) or $url = 'on' and contains(url/@resource,$query) or $description = 'on' and contains(description,$query) or  $keyword = 'on' and (contains(keywords/keyword[1],$query) or contains(keywords/keyword[2],$query) or contains(keywords/keyword[3],$query))">
 	 <tr>
 	 <td><a><xsl:attribute name="href">details.cgi?number=<xsl:value-of select="@no" /></xsl:attribute><xsl:value-of select="title" /></a></td>
@@ -99,13 +86,7 @@
 	 <td><xsl:value-of select="date/year" />-<xsl:value-of select="date/month" />-<xsl:value-of select="date/day" /></td>
 	 <td><xsl:value-of select="price" /></td>
 	 </tr>
-      </xsl:if>
-
-     	</xsl:for-each>
-	</xsl:when>
-      </xsl:choose>
-
-    </table>
-  </xsl:template>
+      </xsl:if>	
+	</xsl:template>
   
 </xsl:stylesheet>
